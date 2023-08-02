@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Ecommerce.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>ÜRÜNLER</h3>
+
+<p>
+    <a asp-action="Create" class="btn btn-light mt-1">Yeni Ürün Ekle</a>
+</p>
+<table  class="table table-striped">
+    <thead>
+        <tr>
+            <th class="m-6 pe-5">
+                @Html.DisplayNameFor(model => model.ProductName) 
+            </th>
+            <th class="m-6 pe-5">
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th class="m-6 pe-5">
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th class="m-6 pe-5">
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th class="m-6 pe-5 ">
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th class="m-6 pe-5">
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr class="table table-striped">
+            <td class="m-2 pe-2">
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+                <td class="m-2 pe-2">
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ProductImage)*@
+                    <img src="@item.ProductImage " class="w-50" />
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductID" class="btn btn-primary w-75 mt-2">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.ProductID" class="btn btn-info w-75 mt-2">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.ProductID" class="btn btn-danger w-75 mt-2">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

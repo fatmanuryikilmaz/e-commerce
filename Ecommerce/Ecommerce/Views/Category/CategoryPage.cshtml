@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Ecommerce.Models.Product>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@foreach (var item in Model)
+{
+    <a asp-action="ProductDetail" asp-route-id="@item.ProductID" asp-controller="Product" class="text-decoration-none">
+        <div class="card text-decoration-none" style="width: 18rem;">
+            <img src="@item.ProductImage" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-dark ">@item.ProductName</h5>
+                <p class="card-text text-dark ">@item.ProductDescription</p>
+                <a href="#" class="btn text-dark ">@item.ProductPrice</a>
+            </div>
+        </div>
+</a>
+}
+ 

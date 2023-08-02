@@ -1,8 +1,53 @@
-﻿@{
+﻿@model IEnumerable<Ecommerce.Models.Category>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+
+   @* <p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<table class="table table-striped">
+        <thead>
+            <tr>
+            <th class="btn text-black mt-1">
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryNDescription)
+                </th>
+                <th></th>
+            </tr>
+        </thead> 
+        <tbody>
+            @foreach (var item in Model)
+            {
+               
+                <tr>
+                    <td>
+                    <a asp-controller="Category" asp-action="CategoryPage" asp-route-id="@item.CategoryID" class="btn  mt-1">
+
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </a>
+
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.CategoryImage)*@
+                        <img src="@item.CategoryImage" class="w-25" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryNDescription)
+                    </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
