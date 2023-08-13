@@ -10,44 +10,25 @@
    @* <p>
         <a asp-action="Create">Create New</a>
     </p>*@
-<table class="table table-striped">
-        <thead>
-            <tr>
-            <th class="btn text-black mt-1">
-                    @Html.DisplayNameFor(model => model.CategoryName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CategoryImage)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CategoryNDescription)
-                </th>
-                <th></th>
-            </tr>
-        </thead> 
-        <tbody>
+
+
             @foreach (var item in Model)
             {
-               
-                <tr>
-                    <td>
-                    <a asp-controller="Category" asp-action="CategoryPage" asp-route-id="@item.CategoryID" class="btn  mt-1">
+               <div class="card m-4 float-start" style="width: 18rem;">
+                  <img src="@item.CategoryImage" class="card-img-top " />
+
+        <div class="card-body text-dark text-decoration-none ">
+            <a asp-controller="Category" asp-action="CategoryPage" asp-route-id="@item.CategoryID" class="card-title text-dark text-decoration-none fs-4">
 
                         @Html.DisplayFor(modelItem => item.CategoryName)
-                    </a>
+                  </a>
+                  <p class="card-text fs-6">
+                      @Html.DisplayFor(modelItem => item.CategoryNDescription)
+                  </p>
+                  
+               </div>
+               </div>
 
-                    </td>
-                    <td>
-                        @*@Html.DisplayFor(modelItem => item.CategoryImage)*@
-                        <img src="@item.CategoryImage" class="w-25" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CategoryNDescription)
-                    </td>
-
-            </tr>
             }
-        </tbody>
-    </table>
 
 
